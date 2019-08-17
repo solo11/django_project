@@ -1,0 +1,119 @@
+{% extends 'blog/base.html' %}
+{% load static  %}
+<head>
+  <link rel="stylesheet" href="{% static "css/post_list.css" %}">
+</head>
+{% block content %}
+{% for post in posts %}
+<!-- <div class="columns">
+    <div class="post">
+            
+        
+        <div class="column date">
+            <div class="column" >published: {{ post.published_date }}</div>
+        </div>
+        <div class="column"> <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2></div>
+        <p>{{ post.text |safe }}</p>
+    </div>
+</div> -->
+
+
+<div class="card-container">
+  <div class="card card--dark" style="width: 70%">
+      <a href="{% url 'post_detail' pk=post.pk %}">
+          <div class="card--display"><i class="material-icons">{{ post.icon }}</i> <div>{{ post.catg }}</div>
+              <h3>{{ post.title }}</h3>
+          </div>
+          <div class="card--hover">
+              <span>{{ post.title }}</span>
+              <p>{{ post.desc }}</p>
+              <p class="link">Click to read more</p>
+          </div>
+      </a>
+      <div class="card--border"></div>
+  </div>
+</div>
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+<!-- <div class="card-container">
+  <div class="card">
+      <a href="worldweb">
+          <div class="card--display"><i class="material-icons">public</i>
+              <h2>World Wide Web</h2>
+          </div>
+          <div class="card--hover">
+              <h2>World Wide Web</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at est orci. Nam molestie pellentesque mi nec lacinia. Cras volutpat arcu sit amet elit sodales, nec volutpat velit bibendum.</p>
+              <p class="link">Click to see project</p>
+          </div>
+      </a>
+      <div class="card--border"></div>
+  </div>
+</div>
+<div class="card-container">
+  <div class="card">
+      <a href="trainthings">
+          <div class="card--display"><i class="material-icons">train</i>
+              <h2>Why I Hate Trains</h2>
+          </div>
+          <div class="card--hover">
+              <h2>Why I Hate Trains</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at est orci. Nam molestie pellentesque mi nec lacinia. Cras volutpat arcu sit amet elit sodales, nec volutpat velit bibendum.</p>
+              <p class="link">Click to see project</p>
+          </div>
+      </a>
+      <div class="card--border"></div>
+  </div>
+</div>
+<div class="card-container">
+  <div class="card card--dark">
+      <a href="androidupdate">
+          <div class="card--display"><i class="material-icons">android</i>
+              <h2>Another Android Update</h2>
+          </div>
+          <div class="card--hover">
+              <h2>Another Android Update</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at est orci. Nam molestie pellentesque mi nec lacinia. Cras volutpat arcu sit amet elit sodales, nec volutpat velit bibendum.</p>
+              <p class="link">Click to see project</p>
+          </div>
+      </a>
+      <div class="card--border"></div>
+  </div>
+</div>
+<div class="card-container">
+  <div class="card card--dark">
+      <a href="phonesoff">
+          <div class="card--display"><i class="material-icons">ring_volume</i>
+              <h2>Why Phones Are So Loud?</h2>
+          </div>
+          <div class="card--hover">
+              <h2>Why Phones Are So Loud?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at est orci. Nam molestie pellentesque mi nec lacinia. Cras volutpat arcu sit amet elit sodales, nec volutpat velit bibendum.</p>
+              <p class="link">Click to see project</p>
+          </div>
+      </a>
+      <div class="card--border"></div>
+  </div>
+</div> -->
+ 
+{% endfor %}
+{% endblock %}  

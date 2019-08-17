@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+        <div>
+                <a href="{% url 'short_main' %}"><i style="padding-top: 10px" class="material-icons dark">home</i></a>
+            </div>Home
+        <h1>Search</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+{% if a is not Null %}
+
+<div>
+shortned url: http://127.0.0.1:8000/s/{{a}}
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

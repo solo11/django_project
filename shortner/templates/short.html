@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+        <div>
+                <a href="{% url 'search' %}"><i style="padding-top: 10px" class="material-icons dark">search</i></a>
+            </div>Search
+<h1>Shortner</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <div>Enter Url{{ form.long_url }}</div>
+    <div>Add custom url below if needed else leave it blank</div>
+    {{ form.short_url }}
+    <button type="submit">submit</button>
+</form>
+{% if a %}
+Shortned URL:
+<span>{{ a }}</span>
+
+{% endif %}
+</div>
+{% endblock %}
